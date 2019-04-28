@@ -7,11 +7,15 @@
 auto lo
 iface lo inet loopback
 
-allow-hotplug eth0
+#allow-hotplug eth0
+auto eth0
 iface eth0 inet static
 address 172.18.98.199/22
 gateway 172.18.98.254
 
-allow-hotplug eth1
+auto eth1
 iface eth1 inet static
 address 200.200.1.199/16
+iface eth1 inet static
+address 201.105.120.199/24
+up ip route add 202.202.0.0/16 via 201.105.120.14 dev eth1 
